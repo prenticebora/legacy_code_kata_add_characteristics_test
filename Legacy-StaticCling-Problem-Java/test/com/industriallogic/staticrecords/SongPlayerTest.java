@@ -1,6 +1,6 @@
 package com.industriallogic.staticrecords;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -17,8 +17,13 @@ public class SongPlayerTest {
 	}
 
 	@Test
-	public void nothing() {
+	public void createSongPlayer() {
+		String playerName = "player 1";
+		SongPlayerStatistics statistics = new SongPlayerStatistics();
 
+		SongPlayer songPlayer = new SongPlayer(playerName, statistics);
+
+		assertNotNull(songPlayer);
 	}
 
 }
