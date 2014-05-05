@@ -36,6 +36,7 @@ public class SongPlayerTest {
 		SongPlayerStatistics statistics = new SongPlayerStatistics();
 
 		SongPlayer songPlayer = new SongPlayer(playerName, statistics);
+		songPlayer.setSongPlayerStatistics(statistics);
 
 		String songName = "song 1";
 		int dataLength = 256;
