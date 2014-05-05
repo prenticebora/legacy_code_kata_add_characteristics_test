@@ -50,4 +50,15 @@ public class SongPlayerTest {
 
 		assertEquals(1, songPlayer.getNumberOfSongsPlayed());
 	}
+
+	@Test(expected = SongNotFoundException.class)
+	public void playUnknownSong() throws SongNotFoundException {
+		String playerName = "player 1";
+		SongPlayerStatistics statistics = new SongPlayerStatistics();
+
+		SongPlayer songPlayer = new SongPlayer(playerName, statistics);
+
+		String unknownSongName = "unknown song";
+		songPlayer.playSong(unknownSongName);
+	}
 }
