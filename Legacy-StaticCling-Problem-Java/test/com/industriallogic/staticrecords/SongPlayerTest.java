@@ -61,4 +61,36 @@ public class SongPlayerTest {
 		String unknownSongName = "unknown song";
 		songPlayer.playSong(unknownSongName);
 	}
+
+	@Test
+	public void checkSongStatistics() {
+		String playerName = "player 1";
+		SongPlayerStatistics statistics = new SongPlayerStatistics();
+
+		SongPlayer songPlayer = new SongPlayer(playerName, statistics);
+		assertEquals(0, statistics.getTotalNumberOfSongs());
+		assertEquals(0, statistics.getTotalNumberOfSongs());
+		assertEquals(null, statistics.getMostPopularSong());
+		assertEquals(null, statistics.getMostDemandingPlayer());
+
+		String songName = "song 1";
+		int dataLength = 256;
+		Song oneSong = new Song(songName, dataLength);
+		songPlayer.addSong(oneSong);
+
+		try {
+			songPlayer.playSong(songName);
+		} catch (SongNotFoundException e) {
+			fail();
+		}
+
+		statistics = songPlayer.getSongPlayerStatistics();
+
+		assertEquals(1, statistics.getTotalNumberOfSongs());
+		assertEquals(1, statistics.getTotalNumberSongsPlayed());
+		assertEquals(songName, statistics.getMostPopularSong());
+		assertEquals(playerName, statistics.getMostDemandingPlayer());
+
+	}
+
 }
